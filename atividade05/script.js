@@ -118,3 +118,20 @@ menu.map((item) => {
 
   menuItems.innerHTML += html;
 });
+function displayMenuButtons(){
+const categories = menu.reduce((value, item) => {
+    if(!value.includes(item.category)){
+        value.push(item.category)
+    }
+
+    return value;
+}, ['all']);
+
+const categoryBtns = categories.map((category) => {
+    return `
+    <button class="filter-button" data-id="${category}">${category}</button>
+    `
+}).join("");
+buttonContainer.innerHTML += categoryBtns
+
+}
